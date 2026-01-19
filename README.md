@@ -15,6 +15,8 @@ It achieves speed without sacrificing stability by using **Range Reduction** ($2
 | **Speedup** | **4.0x - 4.2x** | Consistent across dims 16-1024 |
 | **Throughput** | **~330 MElem/s** | vs. ~80 MElem/s (Reference) |
 | **Top-1 Accuracy** | **100% Match** | 0.0% Mismatch rate |
+| **Top-5 Accuracy** | **100% Match** | 0.0% Mismatch rate |
+| **Top-10 Accuracy** | **100% Match** | 0.0% Mismatch rate |
 | **Max Error** | **< 1e-6** | Negligible KL-Divergence (< 5e-9) |
 
 
