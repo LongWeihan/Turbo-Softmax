@@ -1,15 +1,25 @@
 # Turbo-Softmax
 
-A "high-precision, yet blazing fast" Softmax implementation in C.
+A high-precision, yet blazing fast Softmax implementation in C.
+
+## ⚡ Performance Highlights
+
+| Metric | Result | Notes |
+| :--- | :--- | :--- |
+| **Speedup** | **4.0x - 4.2x** | Consistent across dims 16-1024 |
+| **Throughput** | **~330 MElem/s** | vs. ~80 MElem/s (Reference) |
+| **Top-1 Accuracy** | **100% Match** | 0.0% Mismatch rate |
+| **Max Error** | **< 1e-6** | Negligible KL-Divergence (< 5e-9) |
+
+
+<img width="989" height="841" alt="image" src="https://github.com/user-attachments/assets/9739ddd1-fb3c-4434-9251-e07af4c14ecd" />
+<img width="996" height="349" alt="image" src="https://github.com/user-attachments/assets/b61447fb-8a79-436e-a53f-3eb7c11f3b54" />
 
 It achieves speed without sacrificing stability by using **Range Reduction** ($2^i$, $e^t$):
 
 * **$2^i$**: Constructed directly via **IEEE-754 bit-level manipulation**.
 * **$e^t$**: Approximated using a **5th-order polynomial**.
 * **Normalization**: Uses direct division (`1.0f / sum`) for accuracy.
-<img width="989" height="841" alt="image" src="https://github.com/user-attachments/assets/9739ddd1-fb3c-4434-9251-e07af4c14ecd" />
-<img width="996" height="349" alt="image" src="https://github.com/user-attachments/assets/b61447fb-8a79-436e-a53f-3eb7c11f3b54" />
-
 
 ## 📂 Files
 
