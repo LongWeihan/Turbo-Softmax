@@ -24,7 +24,7 @@ It achieves speed without sacrificing stability by using **Range Reduction** ($2
 
 
 
-# Comparison with Other Softmax Acceleration Schemes
+## Comparison with Other Softmax Acceleration Schemes
 
 ### Summary Comparison Table
 
