@@ -24,6 +24,26 @@ It achieves speed without sacrificing stability by using **Range Reduction** ($2
 
 
 
+# Comparison with Other Softmax Acceleration Schemes
+
+### Summary Comparison Table
+
+| Scheme | Speed | Precision | Memory Overhead | Hardware Dependency | Best Use Case |
+| --- | --- | --- | --- | --- | --- |
+| Standard Lib (`math.h`) | ⭐ | ⭐⭐⭐⭐⭐ | ⭐⭐⭐ | None | Servers, PC, Precision-critical tasks |
+| Look-Up Table (LUT) | ⭐⭐⭐ | ⭐⭐⭐ | ⭐ | None | Legacy MCUs, devices without FPU |
+| SIMD / DSP Libs (NEON/AVX) | ⭐⭐⭐⭐⭐ | ⭐⭐⭐⭐ | ⭐⭐⭐ | **High** (Arch specific) | Mobile phones, Raspberry Pi, High-perf Embedded |
+| Quantization (Int8) | ⭐⭐⭐⭐⭐ | ⭐⭐ | ⭐⭐⭐⭐⭐ | Medium | NPUs, Ultra-low power, Battery devices |
+| **Turbo-Softmax** | ⭐⭐⭐⭐ | ⭐⭐⭐ | ⭐⭐⭐⭐⭐ | **Low** (Generic C) | **General Purpose MCUs (STM32, ESP32, RISC-V)** |
+
+### Verdict
+
+**Turbo-Softmax** is the ideal choice when:
+
+1. You are running **Float32 inference** on a microcontroller.
+2. You cannot afford the memory footprint of a large Look-Up Table.
+3. Your hardware lacks advanced vector (SIMD) instructions, or you need a **cross-platform** solution that "just works."
+
 ## 📂 Files
 
 * `qsoftmax.h` / `qsoftmax.c`: Core implementation (contains `poly5` approximation + `div` normalization).
